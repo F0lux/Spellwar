@@ -51,7 +51,7 @@ struct Spellwar
  *
  * @param [in] grille la grille de jeu a remplir avec les elements de spellwar
  */
-void creerZoneJeu(Spellwar& grille);
+void creerZoneJeu(Spellwar grille);
 
 /**
  * @brief Permet d'afficher sur le terminal la grille de jeu de spellwar
