@@ -38,7 +38,7 @@ void remplirEspaceVide(unsigned int indiceLigne, unsigned int indiceColonne, Ele
 //****************************************************************************
 // DEFINITION DES SOUS-PROGRAMMES
 //****************************************************************************
-void creerZoneJeu(Spellwar grille)
+void creerZoneJeu(Spellwar& grille)
 {
     // Variables locales
     ElementDeJeu elem;
