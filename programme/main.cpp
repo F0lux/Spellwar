@@ -50,7 +50,7 @@ int main(void)
     // const int NOMBRES_ADVERSAIRES = 3; // Nombre initial d'adversaires
 
     string actionsSaisieParJ; // Chaine de caractere contenant les actions saisies par le joueur
-    cout << "E";
+
     // Initialiser la partie
     // Initialiser les variables (NOM DES VARIABLES DANS LE COMMENTAIRE)
 
