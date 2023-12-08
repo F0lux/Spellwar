@@ -101,11 +101,34 @@ void actionArcaflamme(Spellwar& grille, unsigned int iLigne, unsigned int iColon
  * @brief Permet de faire jouer un necrogriffe du jeu spellwar
  *
  * @param [in] grille la grille de jeu a modifier
+ * @param [in] actionJ l'action du joueur
  * @param [in] iLigne l'indice de la ligne de l'element 
  * @param [in] iColonne l'indice de la colonne de l'element
  * @param [in] adversairesViv nombre d'adversaires encore en vie
  */
 void actionNecrogriffe(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
+
+/**
+ * @brief Permet de deplacer un eclair du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] actionJ l'action du joueur
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
+void deplacementEclair(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
+
+/**
+ * @brief Permet de deplacer une flemme du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] actionJ l'action du joueur
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
+void deplacementFlamme(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 /**
  * @brief Permet de mettre a faux deplaceCeTour pour tout les elements du jeu spellwar

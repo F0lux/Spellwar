@@ -99,11 +99,11 @@ int main(void)
                     }
                     else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == '>' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                     {
-                        actionEclair(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
+                        deplacementEclair(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
                     }
                     else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == '<' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                     {
-                        actionFlamme(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
+                        deplacementFlamme(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
                     }
                 }
             }
