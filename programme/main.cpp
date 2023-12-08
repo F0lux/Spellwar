@@ -47,26 +47,19 @@ int main(void)
     // VARIABLES
     Spellwar plateauJeu; // Grille du jeu
 
-    // const int NOMBRES_ADVERSAIRES = 3; // Nombre initial d'adversaires
-
     string actionsSaisieParJ; // Chaine de caractere contenant les actions saisies par le joueur
+    char actionCourante;
+    unsigned int adversairesEnVie;
 
     // Initialiser la partie
     // Initialiser les variables (NOM DES VARIABLES DANS LE COMMENTAIRE)
+    adversairesEnVie = NOMBRES_ADVERSAIRES;
 
     // Initialiser le tableau
     creerZoneJeu(plateauJeu);
 
-    // Positionner le joueur
-    //plateauJeu.zoneJeu[TAILLE_COLONNES / 2][1] = {'J', cyan, false};
-
-    // Positionner les adversaires
-    // Nombre d'arcaflammes/necrogriffes a afficher
-
-    // Positionner le(s) arcaflamme(s) et le(s) necrogriffe(s)
-
-    // Afficher la zone de jeu
-    afficherZoneJeu(plateauJeu);
+    // Positionner le joueur et les adversaires
+    positionnerJoueurEnnemi(plateauJeu);
 
     // Jouer la partie
     while (true)
@@ -75,6 +68,9 @@ int main(void)
         // Saisir et jouer le(s) action(s)
         while (true)
         {
+            // Afficher la zone de jeu
+            afficherZoneJeu(plateauJeu);
+
             // Afficher les actions disponibles pour le joueur
             afficherTexteEnCouleur("Actions possibles :", bleu, true);
             afficherTexteEnCouleur("a --> abandonner, m --> monter, d --> descendre, e --> eclair", bleu, true);
@@ -84,7 +80,7 @@ int main(void)
             cin >> actionsSaisieParJ;
             
             // Jouer les actions
-            for (unsigned int i = 0; i < static_cast<unsigned int>(actionsSaisieParJ.size()); i++)
+            for (unsigned int indiceAction = 0; indiceAction < static_cast<unsigned int>(actionsSaisieParJ.size()); indiceAction++)
             {
                 for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
                 {
@@ -92,24 +88,20 @@ int main(void)
                     {
                         if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'J' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                         {
-                            // Sur le parcours du tableau, qd on arrive au joueur il faut voir ce qu'il fait
-                            /*switch (actionsSaisieParJ[i])
-                            {
-                            case 'a':
-                             
-                                break;
-                            case 'm':
-                            
-                                break;
-                            case 'd':
-                              
-                                break;
-                            case 'e':
-                                break;
-                            }*/
+                            //Sur le parcours du tableau, qd on arrive au joueur il faut voir ce qu'il fait
+                            actionCourante = actionsSaisieParJ[indiceAction];
+                            actionJoueur(plateauJeu,actionCourante,indiceLigne,indiceColonne,adversairesEnVie);
                         }
                     }
                 }
+                for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
+                {
+                    for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
+                    {
+                        plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour = false;
+                    }
+                }
+            effacer();
             }
         }
     }

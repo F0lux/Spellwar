@@ -11,6 +11,14 @@
 
 const unsigned int TAILLE_LIGNES = 35;  // Largeur de la zone de jeu
 const unsigned int TAILLE_COLONNES = 8; // Hauteur de la zone de jeu
+const unsigned int NOMBRES_ADVERSAIRES = 3; // Nombre initial d'adversaires
+
+enum SituationFinJeu
+{
+    abandon,
+    mortJoueur,
+    mortAdversaires
+};
 
 /**
  * @brief Enregistrement caracterisant les differents
@@ -34,16 +42,10 @@ struct ElementDeJeu
     bool deplaceCeTour = false;
 };
 
-enum SituationFinJeu
-{
-    abandon,
-    mortJoueur,
-    mortAdversaires
-};
-
 struct Spellwar
 {
-    ElementDeJeu zoneJeu[TAILLE_LIGNES][TAILLE_COLONNES];
+    ElementDeJeu zoneJeu[TAILLE_COLONNES][TAILLE_LIGNES];
+    SituationFinJeu finJeu;
 };
 
 /**
@@ -51,13 +53,27 @@ struct Spellwar
  *
  * @param [in] grille la grille de jeu a remplir avec les elements de spellwar
  */
-void creerZoneJeu(Spellwar grille);
+void creerZoneJeu(Spellwar& grille);
+
+/**
+ * @brief Permet de positionner le joueur et les adversaires du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ */
+void positionnerJoueurEnnemi(Spellwar& grille);
 
 /**
  * @brief Permet d'afficher sur le terminal la grille de jeu de spellwar
  *
  * @param [in] grille la grille de jeu a afficher
  */
-void afficherZoneJeu(Spellwar grille);
+void afficherZoneJeu(const Spellwar& grille);
+
+/**
+ * @brief Permet d'executer l'action saisie pour le joueur du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ */
+void actionJoueur(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 #endif // SPELLWAR_H

@@ -15,7 +15,7 @@
  * @param [in] indiceLigne l'indice de la ligne courante de la grille.
  * @param [in] element l'element a remplir.
  */
-void remplirMurHorizontal(unsigned int indiceLigne, ElementDeJeu element);
+void remplirMurHorizontal(unsigned int indiceLigne, ElementDeJeu& element);
 
 /**
  * @brief Permet de tester s'il faut affecter a l'element se trouvant en indiceLigne et indiceColonne l'enregistrement murVertical
@@ -24,7 +24,7 @@ void remplirMurHorizontal(unsigned int indiceLigne, ElementDeJeu element);
  * @param [in] indiceColonne l'indice de la colonne courante de la grille.
  * @param [in] element l'element a remplir.
  */
-void remplirMurVertical(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu element);
+void remplirMurVertical(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu& element);
 
 /**
  * @brief Permet de tester s'il faut affecter a l'element se trouvant en indiceLigne et indiceColonne l'enregistrement espaceVide
@@ -33,46 +33,55 @@ void remplirMurVertical(unsigned int indiceLigne, unsigned int indiceColonne, El
  * @param [in] indiceColonne l'indice de la colonne courante de la grille.
  * @param [in] element l'element a remplir.
  */
-void remplirEspaceVide(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu element);
+void remplirEspaceVide(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu& element);
 
 //****************************************************************************
 // DEFINITION DES SOUS-PROGRAMMES
 //****************************************************************************
-void creerZoneJeu(Spellwar grille)
+void creerZoneJeu(Spellwar &grille)
 {
     // Variables locales
     ElementDeJeu elem;
 
     // Code de la procedure
-    for (unsigned int i = 0; i < TAILLE_COLONNES; i++)
+    for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
     {
-        for (unsigned int j = 0; j < TAILLE_LIGNES; j++)
+        for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
         {
-            remplirMurHorizontal(i,elem);
-            remplirMurVertical(i,j,elem);
-            remplirEspaceVide(i,j,elem);
-            grille.zoneJeu[i][j] = elem;
+            if (indiceLigne == 0 || indiceLigne == (TAILLE_COLONNES - 1))
+            {
+                elem = {'#', blanc, false};
+            }
+            else if (indiceLigne != 0 && indiceLigne != (TAILLE_COLONNES-1) && indiceColonne == 0)
+            {
+                elem = {'|', cyan, false};
+            }
+            else
+            {
+                elem = {' ', blanc, false};
+            }
+            grille.zoneJeu[indiceLigne][indiceColonne] = elem;
         }
     }
 }
-        
-void remplirMurHorizontal(unsigned int indiceLigne, ElementDeJeu element)
+
+void remplirMurHorizontal(unsigned int indiceLigne, ElementDeJeu& element)
 {
-    if (indiceLigne == 0 || indiceLigne == TAILLE_COLONNES)
+    if (indiceLigne == 0 || indiceLigne == (TAILLE_COLONNES - 1))
     {
         element = {'#', blanc, false};
     }
 }
 
-void remplirMurVertical(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu element)
+void remplirMurVertical(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu& element)
 {
-    if (indiceColonne == 0 && indiceLigne != 0 && indiceLigne != TAILLE_COLONNES)
+    if (indiceLigne != 0 && indiceLigne != (TAILLE_COLONNES-1) && indiceColonne == 0)
     {
-        element = {'|', cyan, true};
+        element = {'|', cyan, false};
     }
 }
 
-void remplirEspaceVide(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu element)
+void remplirEspaceVide(unsigned int indiceLigne, unsigned int indiceColonne, ElementDeJeu& element)
 {
     if (indiceLigne != 0 && indiceLigne != TAILLE_COLONNES && indiceColonne != 0)
     {

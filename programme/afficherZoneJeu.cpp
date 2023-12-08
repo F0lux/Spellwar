@@ -15,17 +15,17 @@
  *
  * @param [in] element l'element a afficher.
  */
-void afficherCaseTableau(ElementDeJeu element);
+void afficherCaseTableau(const ElementDeJeu& element);
 
 //****************************************************************************
 // DEFINITION DES SOUS-PROGRAMMES
 //****************************************************************************
-void afficherCaseTableau(ElementDeJeu element)
+void afficherCaseTableau(const ElementDeJeu& element)
 {
     afficherTexteEnCouleur(element.representation, element.couleur);
 }
 
-void afficherZoneJeu(Spellwar grille)
+void afficherZoneJeu(const Spellwar& grille)
 {
     // Variables locales
     ElementDeJeu elem;
