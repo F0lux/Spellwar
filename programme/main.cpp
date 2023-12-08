@@ -71,6 +71,9 @@ int main(void)
             // Afficher la zone de jeu
             afficherZoneJeu(plateauJeu);
 
+            // Supprimer les marques de collision
+            supprimerMarqueCollision(plateauJeu);
+
             // Afficher les actions disponibles pour le joueur
             afficherTexteEnCouleur("Actions possibles :", bleu, true);
             afficherTexteEnCouleur("a --> abandonner, m --> monter, d --> descendre, e --> eclair", bleu, true);
@@ -88,13 +91,16 @@ int main(void)
                     {
                         if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'J' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                         {
-                            //Sur le parcours du tableau, qd on arrive au joueur il faut voir ce qu'il fait
                             actionCourante = actionsSaisieParJ[indiceAction];
                             actionJoueur(plateauJeu,actionCourante,indiceLigne,indiceColonne,adversairesEnVie);
                         }
+                        else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'A' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
+                        {
+                            actionArcaflamme(plateauJeu,indiceLigne,indiceColonne,adversairesEnVie);
+                        }
                     }
                 }
-            reinitialiserDeplaceCeTour(plateauJeu);
+            reinitialiserDeplacements(plateauJeu);
             effacer();
             }
         }

@@ -1,5 +1,5 @@
 /**
- * @file action.cpp
+ * @file actionJoueur.cpp
  * @author Rafael Masson - Arthur Baros
  * @brief Partie du corps du module spellwar.h
  * @date 2023-12-07
@@ -97,8 +97,8 @@ void joueurEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, 
         grille.zoneJeu[iLigne][iColonne + 1] = {'X', rouge, false};
         adversairesViv--;
     }
-    else //if (grille.zoneJeu[iLigne][iColonne + 1].representation == '<') le else n'ai vrai que dans le cas ou l'element suivant est une flamme 
+    else //if (grille.zoneJeu[iLigne][iColonne + 1].representation == '<') le else n'est vrai que dans le cas ou l'element suivant est une flamme 
     {
-        grille.zoneJeu[iLigne][iColonne + 1] = {' ', blanc, false};
+        grille.zoneJeu[iLigne][iColonne + 1] = {'X', rouge, false};
     }
 }

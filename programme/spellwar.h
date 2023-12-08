@@ -70,17 +70,38 @@ void positionnerJoueurEnnemi(Spellwar& grille);
 void afficherZoneJeu(const Spellwar& grille);
 
 /**
- * @brief Permet d'executer l'action saisie pour le joueur du jeu spellwar
+ * @brief Permet de supprimer les marques de collision du jeu spellwar
  *
  * @param [in] grille la grille de jeu a modifier
  */
+void supprimerMarqueCollision(Spellwar &grille);
+
+/**
+ * @brief Permet d'executer l'action saisie pour le joueur du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] actionJ l'action du joueur
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'aversaires encore en vie
+ */
 void actionJoueur(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
+
+/**
+ * @brief Permet de faire jouer un arcaflamme du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'aversaires encore en vie
+ */
+void actionArcaflamme(Spellwar& grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 /**
  * @brief Permet de mettre a faux deplaceCeTour pour tout les elements du jeu spellwar
  *
  * @param [in] grille la grille de jeu a modifier
  */
-void reinitialiserDeplaceCeTour(Spellwar& grille);
+void reinitialiserDeplacements(Spellwar& grille);
 
 #endif // SPELLWAR_H
