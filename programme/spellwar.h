@@ -105,7 +105,7 @@ void actionArcaflamme(Spellwar& grille, unsigned int iLigne, unsigned int iColon
  * @param [in] iColonne l'indice de la colonne de l'element
  * @param [in] adversairesViv nombre d'adversaires encore en vie
  */
-void actionNecrogriffe(Spellwar& grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
+void actionNecrogriffe(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 /**
  * @brief Permet de mettre a faux deplaceCeTour pour tout les elements du jeu spellwar

@@ -89,9 +89,9 @@ int main(void)
                 {
                     for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
                     {
+                        actionCourante = actionsSaisieParJ[indiceAction];
                         if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'J' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                         {
-                            actionCourante = actionsSaisieParJ[indiceAction];
                             actionJoueur(plateauJeu,actionCourante,indiceLigne,indiceColonne,adversairesEnVie);
                         }
                         else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'A' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
@@ -100,7 +100,7 @@ int main(void)
                         }
                         else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'N' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                         {
-                            actionNecrogriffe(plateauJeu,indiceLigne,indiceColonne,adversairesEnVie);
+                            actionNecrogriffe(plateauJeu,actionCourante,indiceLigne,indiceColonne,adversairesEnVie);
                         }
                     }
                 }
