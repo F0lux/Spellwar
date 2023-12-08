@@ -94,13 +94,7 @@ int main(void)
                         }
                     }
                 }
-                for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
-                {
-                    for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
-                    {
-                        plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour = false;
-                    }
-                }
+            reinitialiserDeplaceCeTour(plateauJeu);
             effacer();
             }
         }

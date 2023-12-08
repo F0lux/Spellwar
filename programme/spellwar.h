@@ -76,4 +76,11 @@ void afficherZoneJeu(const Spellwar& grille);
  */
 void actionJoueur(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
+/**
+ * @brief Permet de mettre a faux deplaceCeTour pour tout les elements du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ */
+void reinitialiserDeplaceCeTour(Spellwar& grille);
+
 #endif // SPELLWAR_H
