@@ -8,7 +8,8 @@
 		"files.associations": {
 			"xutility": "cpp",
 			"iostream": "cpp",
-			"ostream": "cpp"
+			"ostream": "cpp",
+			"xstring": "cpp"
 		}
 	}
 }

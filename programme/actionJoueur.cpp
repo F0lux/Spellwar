@@ -34,10 +34,6 @@ void actionJoueur(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned 
         break;
     case 'e':
         joueurEclair(grille,iLigne,iColonne,adversairesViv);
-        if (adversairesViv == 0)
-        {
-            grille.finJeu = mortAdversaires;
-        }
         break;
     default:
         break;

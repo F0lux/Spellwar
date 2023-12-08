@@ -114,4 +114,11 @@ void actionNecrogriffe(Spellwar& grille, char actionJ, unsigned int iLigne, unsi
  */
 void reinitialiserDeplacements(Spellwar& grille);
 
+/**
+ * @brief Permet d'afficher un message expliquant la raison de la fin de la partie du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu qui contient la raison de la fin de la partie
+ */
+void finirLaPartie(const Spellwar& grille);
+
 #endif // SPELLWAR_H

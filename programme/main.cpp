@@ -38,7 +38,6 @@ using namespace std;
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
 
-
 //****************************************************************************
 // PROGRAMME PRINCIPAL
 //****************************************************************************
@@ -46,6 +45,7 @@ int main(void)
 {
     // VARIABLES
     Spellwar plateauJeu; // Grille du jeu
+    bool partieFinie = false; // Vrai si une condition de fin de partie a ete atteinte 
 
     string actionsSaisieParJ; // Chaine de caractere contenant les actions saisies par le joueur
     char actionCourante;
@@ -62,54 +62,82 @@ int main(void)
     positionnerJoueurEnnemi(plateauJeu);
 
     // Jouer la partie
-    while (true)
+    // Saisir et jouer le(s) action(s)
+    do
     {
-        
-        // Saisir et jouer le(s) action(s)
-        while (true)
+        // Afficher la zone de jeu
+        afficherZoneJeu(plateauJeu);
+
+        // Afficher les actions disponibles pour le joueur
+        afficherTexteEnCouleur("Actions possibles :", bleu, true);
+        afficherTexteEnCouleur("a --> abandonner, m --> monter, d --> descendre, e --> eclair", bleu, true);
+
+        // Saisir les actions
+        cout << "Vos actions : ";
+        cin >> actionsSaisieParJ;
+
+        effacer();
+        // Jouer les actions
+        for (unsigned int indiceAction = 0; indiceAction < static_cast<unsigned int>(actionsSaisieParJ.size()); indiceAction++)
         {
-            // Afficher la zone de jeu
-            afficherZoneJeu(plateauJeu);
-
-            // Supprimer les marques de collision
-            supprimerMarqueCollision(plateauJeu);
-
-            // Afficher les actions disponibles pour le joueur
-            afficherTexteEnCouleur("Actions possibles :", bleu, true);
-            afficherTexteEnCouleur("a --> abandonner, m --> monter, d --> descendre, e --> eclair", bleu, true);
-
-            // Saisir les actions
-            cout << "Vos actions : ";
-            cin >> actionsSaisieParJ;
-            
-            // Jouer les actions
-            for (unsigned int indiceAction = 0; indiceAction < static_cast<unsigned int>(actionsSaisieParJ.size()); indiceAction++)
+            for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
             {
-                for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
+                for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
                 {
-                    for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
+                    actionCourante = actionsSaisieParJ[indiceAction];
+                    if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'J' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
                     {
-                        actionCourante = actionsSaisieParJ[indiceAction];
-                        if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'J' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
-                        {
-                            actionJoueur(plateauJeu,actionCourante,indiceLigne,indiceColonne,adversairesEnVie);
-                        }
-                        else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'A' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
-                        {
-                            actionArcaflamme(plateauJeu,indiceLigne,indiceColonne,adversairesEnVie);
-                        }
-                        else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'N' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
-                        {
-                            actionNecrogriffe(plateauJeu,actionCourante,indiceLigne,indiceColonne,adversairesEnVie);
-                        }
+                        actionJoueur(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
+                    }
+                    else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'A' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
+                    {
+                        actionArcaflamme(plateauJeu, indiceLigne, indiceColonne, adversairesEnVie);
+                    }
+                    else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'N' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
+                    {
+                        actionNecrogriffe(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
+                    }
+                    else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == '>' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
+                    {
+                        actionEclair(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
+                    }
+                    else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == '<' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
+                    {
+                        actionFlamme(plateauJeu, actionCourante, indiceLigne, indiceColonne, adversairesEnVie);
                     }
                 }
-            reinitialiserDeplacements(plateauJeu);
-            effacer();
             }
+            afficherZoneJeu(plateauJeu);       
+            afficherTexteEnCouleur("Actions possibles :", bleu, true);
+            afficherTexteEnCouleur("a --> abandonner, m --> monter, d --> descendre, e --> eclair", bleu, true);
+            cout << "Vos actions : " << actionsSaisieParJ << endl << endl;
+            // Supprimer les marques de collision
+            supprimerMarqueCollision(plateauJeu);
+            if (plateauJeu.finJeu == abandon)
+            {
+                partieFinie = true;
+                break;
+            }
+            if (plateauJeu.finJeu == mortJoueur)
+            {
+                partieFinie = true;
+                break;
+            }
+            if (adversairesEnVie == 0)
+            {
+                plateauJeu.finJeu = mortAdversaires;
+                partieFinie = true;
+                break;
+            }
+            pause(1);
+            effacer();
+            reinitialiserDeplacements(plateauJeu);
         }
-    }
+    } while (partieFinie != true);
+
     // Finir la partie
+    finirLaPartie(plateauJeu);
+
     return 0;
 }
 
