@@ -10,10 +10,31 @@
 //****************************************************************************
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
+/**
+ * @brief Permet de faire monter le joueur du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ */
 void joueurMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne);
 
+/**
+ * @brief Permet de faire descendre le joueur du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ */
 void joueurDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iColonne);
 
+/**
+ * @brief Permet de faire tirer un eclair au joueur du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ */
 void joueurEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 //****************************************************************************

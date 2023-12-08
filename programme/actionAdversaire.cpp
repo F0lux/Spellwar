@@ -1,25 +1,73 @@
 /**
- * @file actionAdversaires.cpp
+ * @file actionAdversaire.cpp
  * @author Rafael Masson - Arthur Baros
  * @brief Partie du corps du module spellwar.h
  * @date 2023-12-07
  */
 #include "spellwar.h"
-#include <iostream>
-
+//#include <iostream>
 //****************************************************************************
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
+/**
+ * @brief Permet de faire monter un arcaflamme du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
 void arcaflammeMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
+/**
+ * @brief Permet de faire descendre un arcaflamme du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ */
 void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iColonne);
 
+/**
+ * @brief Permet de faire tirer un flamme a un arcaflamme du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
 void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
+/**
+ * @brief Permet de faire se deplacer en diagonale haut-gauche un necrogriffe du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] actionJ l'action du joueur
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
 void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
+/**
+ * @brief Permet de faire aller a gauche un necrogriffe du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
 void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
+/**
+ * @brief Permet de faire se deplacer en diagonale bas-gauche un necrogriffe du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] actionJ l'action du joueur
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
 void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 //****************************************************************************
