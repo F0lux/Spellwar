@@ -93,9 +93,19 @@ void actionJoueur(Spellwar& grille, char actionJ, unsigned int iLigne, unsigned 
  * @param [in] grille la grille de jeu a modifier
  * @param [in] iLigne l'indice de la ligne de l'element 
  * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'aversaires encore en vie
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
  */
 void actionArcaflamme(Spellwar& grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
+
+/**
+ * @brief Permet de faire jouer un necrogriffe du jeu spellwar
+ *
+ * @param [in] grille la grille de jeu a modifier
+ * @param [in] iLigne l'indice de la ligne de l'element 
+ * @param [in] iColonne l'indice de la colonne de l'element
+ * @param [in] adversairesViv nombre d'adversaires encore en vie
+ */
+void actionNecrogriffe(Spellwar& grille, unsigned int iLigne, unsigned int iColonne, unsigned int adversairesViv);
 
 /**
  * @brief Permet de mettre a faux deplaceCeTour pour tout les elements du jeu spellwar

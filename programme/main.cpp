@@ -98,6 +98,10 @@ int main(void)
                         {
                             actionArcaflamme(plateauJeu,indiceLigne,indiceColonne,adversairesEnVie);
                         }
+                        else if (plateauJeu.zoneJeu[indiceLigne][indiceColonne].representation == 'N' && plateauJeu.zoneJeu[indiceLigne][indiceColonne].deplaceCeTour == false)
+                        {
+                            actionNecrogriffe(plateauJeu,indiceLigne,indiceColonne,adversairesEnVie);
+                        }
                     }
                 }
             reinitialiserDeplacements(plateauJeu);

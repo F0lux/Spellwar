@@ -26,7 +26,11 @@ void supprimerMarqueCollision(Spellwar &grille)
     {
         for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
         {
-            if (grille.zoneJeu[indiceLigne][indiceColonne].representation == 'X')
+            if (grille.zoneJeu[indiceLigne][indiceColonne].representation == 'X' && indiceColonne == 0)
+            {
+                grille.zoneJeu[indiceLigne][indiceColonne] = {'|', cyan, false};
+            }
+            else if (grille.zoneJeu[indiceLigne][indiceColonne].representation == 'X' && indiceColonne != 0)
             {
                 grille.zoneJeu[indiceLigne][indiceColonne] = {' ', blanc, false};
             }
