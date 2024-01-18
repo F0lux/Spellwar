@@ -131,3 +131,9 @@ void definirFinJeu(Spellwar &grille, const SituationFinJeu &finJ)
     // Definir la fin de la partie a finJ
     grille.finJeu = finJ;
 }
+
+void definirElement(Spellwar& grille, unsigned int iLigne, unsigned int iColonne, ElementDeJeu element)
+{
+    // Definir l'element en iLigne iColonne de la zone de jeu grille a element
+    grille.zoneJeu[iLigne][iColonne] = element;
+}

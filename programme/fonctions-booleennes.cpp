@@ -36,6 +36,11 @@ bool estSurDerniereColonne(unsigned int iColonne)
     return iColonne == TAILLE_LIGNES - 1;
 }
 
+bool estSurPremiereColonne(unsigned int iColonne)
+{
+    return iColonne == 0;
+}
+
 bool estSurPremiereOuDerniereLigne(unsigned int iLigne)
 {
     return iLigne == 0 || iLigne == (TAILLE_COLONNES - 1);

@@ -23,9 +23,9 @@ void supprimerMarqueCollision(Spellwar &grille)
     {
         for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
         {
-            if (grille.zoneJeu[indiceLigne][indiceColonne].entite == marqueurCollision && indiceColonne == 0)
+            if (grille.zoneJeu[indiceLigne][indiceColonne].entite == marqueurCollision)
             {
-                if (indiceColonne == 0)
+                if (estSurPremiereColonne(indiceColonne))
                 {
                     grille.zoneJeu[indiceLigne][indiceColonne] = creerMurVertical();
                 }

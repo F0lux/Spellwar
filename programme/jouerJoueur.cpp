@@ -63,50 +63,43 @@ void jouerJoueur(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned i
 
 void joueurMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne - 1][iColonne];
 
     if (elementSuivant.entite == espaceVide)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerJoueur(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne - 1, iColonne, creerJoueur(true));
     }
     else if (elementSuivant.entite == necrogriffe)
     {
-        elementCourant = creerEspaceVide();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
         definirFinJeu(grille, mortJoueur);
     }
     else if (elementSuivant.entite == flamme)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne - 1, iColonne, creerMarqueurCollision());
         definirFinJeu(grille, mortJoueur);
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne - 1][iColonne] = elementSuivant;
 }
 
 void joueurDescendre(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne + 1][iColonne];
 
     if (elementSuivant.entite == espaceVide)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerJoueur(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne + 1, iColonne, creerJoueur(true));
     }
     else if (elementSuivant.entite == necrogriffe)
     {
         jouerNecrogriffe(grille, actionJ, iLigne + 1, iColonne, adversairesViv);
-        elementCourant = creerEspaceVide();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
 
         if (elementSuivant.entite == necrogriffe)
         {
@@ -114,18 +107,15 @@ void joueurDescendre(Spellwar &grille, char actionJ, unsigned int iLigne, unsign
         }
         else
         {
-            elementSuivant = creerJoueur(true);
+            definirElement(grille, iLigne + 1, iColonne, creerJoueur(true));
         }
     }
     else if (elementSuivant.entite == flamme)
     {
         deplacerFlamme(grille, iLigne + 1, iColonne, adversairesViv);
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerJoueur(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne + 1, iColonne, creerJoueur(true));
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne + 1][iColonne] = elementSuivant;
 }
 
 void joueurEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
@@ -133,25 +123,23 @@ void joueurEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, 
     ElementDeJeu elementSuivant;
 
     elementSuivant = grille.zoneJeu[iLigne][iColonne + 1];
-    
+
     if (elementSuivant.entite == espaceVide)
     {
-        elementSuivant = creerEclair(true);
+        definirElement(grille, iLigne, iColonne + 1, creerEclair(true));
     }
     else if (elementSuivant.entite == necrogriffe || elementSuivant.entite == flamme)
     {
-        if(elementSuivant.entite == necrogriffe)
+        if (elementSuivant.entite == necrogriffe)
         {
             adversairesViv--;
         }
 
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne + 1, creerMarqueurCollision());
     }
     else if (elementSuivant.entite == eclair)
     {
         deplacerEclair(grille, iLigne, iColonne + 1, adversairesViv);
-        elementSuivant = creerEclair(true);
+        definirElement(grille, iLigne, iColonne + 1, creerEclair(true));
     }
-
-    grille.zoneJeu[iLigne][iColonne + 1] = elementSuivant;
 }

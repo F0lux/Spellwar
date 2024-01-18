@@ -2,16 +2,16 @@
  * @file spellwar.h
  * @author Rafael Masson - Arthur Baros
  * @brief Fichier d'entête du module spellwar
- * @date 2023-12-02
+ * @date 2023-01-18
  */
 #ifndef SPELLWAR_H
 #define SPELLWAR_H
 
 #include "game-tools.h"
 
-const unsigned int TAILLE_LIGNES = 10;      // Largeur de la zone de jeu (de base c'est 35)
-const unsigned int TAILLE_COLONNES = 20;     // Hauteur de la zone de jeu (de base c'est 8)
-const unsigned int NOMBRES_ADVERSAIRES = 10; // Nombre initial d'adversaires (de base c'est 3)
+const unsigned int TAILLE_LIGNES = 11;       // Largeur de la zone de jeu (de base c'est 35)
+const unsigned int TAILLE_COLONNES = 15;     // Hauteur de la zone de jeu (de base c'est 8)
+const unsigned int NOMBRES_ADVERSAIRES = 5; // Nombre initial d'adversaires (de base c'est 3)
 
 enum Entite
 {
@@ -59,7 +59,6 @@ struct Spellwar
  */
 void creerZoneJeu(Spellwar &grille);
 
-
 ElementDeJeu creerJoueur(bool deplCeTour = false);
 
 ElementDeJeu creerArcaflamme(bool deplCeTour = false);
@@ -78,11 +77,13 @@ ElementDeJeu creerEspaceVide();
 
 ElementDeJeu creerMarqueurCollision();
 
-SituationFinJeu obtenirFinJeu(const Spellwar& grille);
+SituationFinJeu obtenirFinJeu(const Spellwar &grille);
 
-void definirFinJeu(Spellwar& grille, const SituationFinJeu& finJ);
+void definirFinJeu(Spellwar &grille, const SituationFinJeu &finJ);
 
-void jouerUnTour(Spellwar& grille, char actionJ, unsigned int& adversairesViv);
+void definirElement(Spellwar& grille, unsigned int iLigne, unsigned int iColonne, ElementDeJeu element);
+
+void jouerUnTour(Spellwar &grille, char actionJ, unsigned int &adversairesViv);
 
 /**
  * @brief Permet de positionner le joueur et les adversaires du jeu spellwar
@@ -90,7 +91,6 @@ void jouerUnTour(Spellwar& grille, char actionJ, unsigned int& adversairesViv);
  * @param [in] grille la grille de jeu a modifier
  */
 void positionnerPersonnages(Spellwar &grille);
-
 
 void afficherPlateauEtInformations(const Spellwar &grille);
 
@@ -169,6 +169,8 @@ bool estNecrogriffePasDeplCeTour(Spellwar &grille, unsigned int iLigne, unsigned
 bool estEclairPasDeplCeTour(Spellwar &grille, unsigned int iLigne, unsigned int iColonne);
 
 bool estFlammePasDeplCeTour(Spellwar &grille, unsigned int iLigne, unsigned int iColonne);
+
+bool estSurPremiereColonne(unsigned int iColonne);
 
 bool estSurDerniereColonne(unsigned int iColonne);
 

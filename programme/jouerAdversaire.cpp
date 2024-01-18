@@ -124,34 +124,27 @@ void jouerArcaflamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonn
 
 void arcaflammeMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne - 1][iColonne];
 
     if (elementSuivant.entite == espaceVide)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerArcaflamme(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne - 1, iColonne, creerArcaflamme(true));
     }
     else if (elementSuivant.entite == eclair)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne - 1, iColonne, creerMarqueurCollision());
         adversairesViv--;
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne - 1][iColonne] = elementSuivant;
 }
 
 void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne + 1][iColonne];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == eclair)
@@ -161,21 +154,18 @@ void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iCo
             deplacerEclair(grille, iLigne + 1, iColonne, adversairesViv);
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerArcaflamme(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne + 1, iColonne, creerArcaflamme(true));
     }
     else if (elementSuivant.entite == arcaflamme)
     {
         jouerArcaflamme(grille, iLigne + 1, iColonne, adversairesViv);
         if (elementSuivant.entite != arcaflamme)
         {
-            elementCourant = creerEspaceVide();
-            elementSuivant = creerArcaflamme(true);
+            definirElement(grille, iLigne, iColonne, creerEspaceVide());
+            definirElement(grille, iLigne + 1, iColonne, creerArcaflamme(true));
         }
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne + 1][iColonne] = elementSuivant;
 }
 
 void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
@@ -186,7 +176,7 @@ void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColon
 
     if (elementSuivant.entite == espaceVide)
     {
-        elementSuivant = creerFlamme(true);
+        definirElement(grille, iLigne, iColonne - 1, creerFlamme(true));
     }
     else if (elementSuivant.entite == necrogriffe || elementSuivant.entite == eclair)
     {
@@ -195,10 +185,8 @@ void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColon
             adversairesViv--;
         }
 
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne - 1, creerMarqueurCollision());
     }
-
-    grille.zoneJeu[iLigne][iColonne - 1] = elementSuivant;
 }
 
 void jouerNecrogriffe(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
@@ -251,10 +239,8 @@ void jouerNecrogriffe(Spellwar &grille, char actionJ, unsigned int iLigne, unsig
 
 void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne - 1][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == joueur)
@@ -264,26 +250,21 @@ void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iCo
             definirFinJeu(grille, mortJoueur);
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerNecrogriffe(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne - 1, iColonne - 1, creerNecrogriffe(true));
     }
     else if (elementSuivant.entite == eclair || elementSuivant.entite == flamme || elementSuivant.entite == murVertical)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne - 1, iColonne - 1, creerMarqueurCollision());
         adversairesViv--;
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne - 1][iColonne - 1] = elementSuivant;
 }
 
 void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == joueur)
@@ -293,26 +274,21 @@ void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColo
             definirFinJeu(grille, mortJoueur);
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerNecrogriffe(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne, iColonne - 1, creerNecrogriffe(true));
     }
     else if (elementSuivant.entite == eclair || elementSuivant.entite == flamme || elementSuivant.entite == murVertical)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne, iColonne - 1, creerMarqueurCollision());
         adversairesViv--;
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne][iColonne - 1] = elementSuivant;
 }
 
 void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne + 1][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == eclair || elementSuivant.entite == flamme)
@@ -326,21 +302,21 @@ void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, uns
             deplacerFlamme(grille, iLigne + 1, iColonne - 1, adversairesViv);
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerNecrogriffe(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne + 1, iColonne - 1, creerNecrogriffe(true));
     }
     else if (elementSuivant.entite == murVertical)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne + 1, iColonne - 1, creerMarqueurCollision());
         adversairesViv--;
     }
     else if (elementSuivant.entite == joueur)
     {
         if (elementSuivant.deplaceCeTour)
         {
-            elementCourant = creerEspaceVide();
-            elementSuivant = creerNecrogriffe(true);
+            definirElement(grille, iLigne, iColonne, creerEspaceVide());
+            definirElement(grille, iLigne + 1, iColonne - 1, creerNecrogriffe(true));
             definirFinJeu(grille, mortJoueur);
         }
         else
@@ -350,11 +326,8 @@ void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, uns
             {
                 definirFinJeu(grille, mortJoueur);
             }
-            elementCourant = creerEspaceVide();
-            elementSuivant = creerNecrogriffe(true);
+            definirElement(grille, iLigne, iColonne, creerEspaceVide());
+            definirElement(grille, iLigne + 1, iColonne - 1, creerNecrogriffe(true));
         }
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne + 1][iColonne - 1] = elementSuivant;
 }

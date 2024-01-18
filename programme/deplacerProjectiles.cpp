@@ -2,19 +2,14 @@
  * @file deplacerProjectiles.cpp
  * @author Rafael Masson - Arthur Baros
  * @brief Partie du corps du module spellwar.h
- * @date 2023-01-17
+ * @date 2023-01-18
  */
 #include "spellwar.h"
 
-//****************************************************************************
-// DEFINITION DES SOUS-PROGRAMMES
-//****************************************************************************
 void deplacerEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne][iColonne + 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == eclair)
@@ -24,8 +19,8 @@ void deplacerEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne
             deplacerEclair(grille, iLigne, iColonne + 1, adversairesViv);
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerEclair(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne, iColonne + 1, creerEclair(true));
     }
     else if (elementSuivant.entite == flamme || elementSuivant.entite == necrogriffe || elementSuivant.entite == arcaflamme)
     {
@@ -34,30 +29,25 @@ void deplacerEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne
             adversairesViv--;
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne, iColonne + 1, creerMarqueurCollision());
     }
     else if (estSurDerniereColonne(iColonne))
     {
-        elementCourant = creerEspaceVide();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne][iColonne + 1] = elementSuivant;
 }
 
 void deplacerFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
-    ElementDeJeu elementCourant;
     ElementDeJeu elementSuivant;
 
-    elementCourant = grille.zoneJeu[iLigne][iColonne];
     elementSuivant = grille.zoneJeu[iLigne][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide)
     {
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerFlamme(true);
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne, iColonne - 1, creerFlamme(true));
     }
     else if (elementSuivant.entite == murVertical || elementSuivant.entite == eclair || elementSuivant.entite == necrogriffe || elementSuivant.entite == joueur)
     {
@@ -70,10 +60,7 @@ void deplacerFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne
             definirFinJeu(grille, mortJoueur);
         }
 
-        elementCourant = creerEspaceVide();
-        elementSuivant = creerMarqueurCollision();
+        definirElement(grille, iLigne, iColonne, creerEspaceVide());
+        definirElement(grille, iLigne, iColonne - 1, creerMarqueurCollision());
     }
-
-    grille.zoneJeu[iLigne][iColonne] = elementCourant;
-    grille.zoneJeu[iLigne][iColonne - 1] = elementSuivant;
 }
