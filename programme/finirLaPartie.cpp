@@ -1,15 +1,12 @@
-/**
- * @file finirLaPartie.cpp
- * @author Rafael Masson - Arthur Baros
- * @brief Partie du corps du module spellwar.h
- * @date 2023-12-07
- */
+/*
+ Programme : finirLaPartie.cpp
+ But : Partie du corps du module spellwar.h
+ Auteurs : Rafael Masson - Arthur Baros
+ Date de derniere modification : 18/01/2024
+*/
 #include "spellwar.h"
 #include <iostream>
 
-//****************************************************************************
-// DEFINITION DES SOUS-PROGRAMMES
-//****************************************************************************
 void finirLaPartie(const Spellwar &grille)
 {
     switch (obtenirFinJeu(grille))

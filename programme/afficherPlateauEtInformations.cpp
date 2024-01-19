@@ -1,27 +1,20 @@
-/**
- * @file afficherPlateauEtInformations.cpp
- * @author Rafael Masson - Arthur Baros
- * @brief Partie du corps du module spellwar.h
- * @date 2023-01-16
- */
+/*
+ Programme : afficherPlateauEtInformations.cpp
+ But : Partie du corps du module spellwar.h
+ Auteurs : Rafael Masson - Arthur Baros
+ Date de derniere modification : 18/01/2024
+*/
 #include "spellwar.h"
 #include <iostream>
 
 //****************************************************************************
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
-/**
- * @brief Permet d'afficher sur le terminal la representation graphique de l'enregistrement element
- *
- * @param [in] element l'element a afficher.
- */
+
+// Permet d'afficher sur le terminal la representation graphique de l'enregistrement element
 void afficherCaseTableau(const ElementDeJeu &element);
 
-/**
- * @brief Permet d'afficher sur le terminal la grille de jeu de spellwar
- *
- * @param [in] grille la grille de jeu a afficher
- */
+// Permet d'afficher sur le terminal la grille de jeu de spellwar
 void afficherZoneJeu(const Spellwar& grille);
 
 //****************************************************************************
@@ -34,7 +27,7 @@ void afficherCaseTableau(const ElementDeJeu &element)
 
 void afficherZoneJeu(const Spellwar &grille)
 {
-    // Variables locales
+    // Variables
     ElementDeJeu elem;
 
     // Code de la procedure

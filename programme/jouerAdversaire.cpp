@@ -1,79 +1,49 @@
-/**
- * @file actionAdversaire.cpp
- * @author Rafael Masson - Arthur Baros
- * @brief Partie du corps du module spellwar.h
- * @date 2023-12-07
- */
+/*
+ Programme : jouerAdversaire.cpp
+ But : Partie du corps du module spellwar.h
+ Auteurs : Rafael Masson - Arthur Baros
+ Date de derniere modification : 18/01/2024
+*/
 #include "spellwar.h"
 
 //****************************************************************************
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
-/**
- * @brief Permet de faire monter un arcaflamme du jeu spellwar
- *
- * @param [in] grille la grille de jeu a modifier
- * @param [in] iLigne l'indice de la ligne de l'element
- * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'adversaires encore en vie
- */
+
+/* Permet de faire monter d'une ligne un arcaflamme du jeu spellwar
+ * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
+ * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void arcaflammeMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/**
- * @brief Permet de faire descendre un arcaflamme du jeu spellwar
- *
- * @param [in] grille la grille de jeu a modifier
- * @param [in] iLigne l'indice de la ligne de l'element
- * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'adversaires encore en vie
- */
+/* Permet de faire descendre d'une ligne un arcaflamme du jeu spellwar
+ * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
+ * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/**
- * @brief Permet de faire tirer un flamme a un arcaflamme du jeu spellwar
- *
- * @param [in] grille la grille de jeu a modifier
- * @param [in] iLigne l'indice de la ligne de l'element
- * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'adversaires encore en vie
- */
+/* Permet de faire tirer un flamme a un arcaflamme du jeu spellwar
+ * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
+ * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/**
- * @brief Permet de faire se deplacer en diagonale haut-gauche un necrogriffe du jeu spellwar
- *
- * @param [in] grille la grille de jeu a modifier
- * @param [in] actionJ l'action du joueur
- * @param [in] iLigne l'indice de la ligne de l'element
- * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'adversaires encore en vie
- */
+/* Permet de faire se deplacer en diagonale haut-gauche un necrogriffe du jeu spellwar
+ * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
+ * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/**
- * @brief Permet de faire aller a gauche un necrogriffe du jeu spellwar
- *
- * @param [in] grille la grille de jeu a modifier
- * @param [in] iLigne l'indice de la ligne de l'element
- * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'adversaires encore en vie
- */
+/* Permet de faire aller a gauche un necrogriffe du jeu spellwar
+ * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
+ * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/**
- * @brief Permet de faire se deplacer en diagonale bas-gauche un necrogriffe du jeu spellwar
- *
- * @param [in] grille la grille de jeu a modifier
- * @param [in] actionJ l'action du joueur
- * @param [in] iLigne l'indice de la ligne de l'element
- * @param [in] iColonne l'indice de la colonne de l'element
- * @param [in] adversairesViv nombre d'adversaires encore en vie
- */
+/* Permet de faire se deplacer en diagonale bas-gauche un necrogriffe du jeu spellwar
+ * Prend en parametre la grille de jeu a modifier, actionJ l'action du joueur, iLigne l'indice de la ligne de l'element,
+ * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
 //****************************************************************************
 // DEFINITION DES SOUS-PROGRAMMES
 //****************************************************************************
+
 void jouerArcaflamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
     // Variables
@@ -89,7 +59,7 @@ void jouerArcaflamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonn
     int numAct;
     actArca action;
 
-    // Code procedure
+    // Code de la procedure
     numAct = random(borneMinAct, borneMaxAct);
     switch (numAct)
     {
@@ -124,8 +94,10 @@ void jouerArcaflamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonn
 
 void arcaflammeMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
+    // Variables
     ElementDeJeu elementSuivant;
 
+    // Code de la procedure
     elementSuivant = grille.zoneJeu[iLigne - 1][iColonne];
 
     if (elementSuivant.entite == espaceVide)
@@ -143,14 +115,18 @@ void arcaflammeMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColon
 
 void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
+    // Variables
     ElementDeJeu elementSuivant;
 
+    // Code de la procedure
     elementSuivant = grille.zoneJeu[iLigne + 1][iColonne];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == eclair)
     {
         if (elementSuivant.entite == eclair)
         {
+            /* comme l'eclair est en dessous, il n'a pas encore ete deplace, pour faire apparaitre descendre
+            l'arcaflamme a cette position on doit d'abord deplacer l'eclair */
             deplacerEclair(grille, iLigne + 1, iColonne, adversairesViv);
         }
 
@@ -159,7 +135,11 @@ void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iCo
     }
     else if (elementSuivant.entite == arcaflamme)
     {
+        /* comme l'arcaflamme est en dessous, il n'a pas encore ete deplace, pour faire apparaitre descendre
+        l'arcaflamme a cette position on doit d'abord deplacer celui qui s'y trouve deja */
         jouerArcaflamme(grille, iLigne + 1, iColonne, adversairesViv);
+
+        // s'il n'est plus en dessous, alors on peut descendre l'arcaflamme
         if (elementSuivant.entite != arcaflamme)
         {
             definirElement(grille, iLigne, iColonne, creerEspaceVide());
@@ -170,8 +150,10 @@ void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iCo
 
 void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
+    // Variables
     ElementDeJeu elementSuivant;
 
+    // Code de la procedure
     elementSuivant = grille.zoneJeu[iLigne][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide)
@@ -204,7 +186,7 @@ void jouerNecrogriffe(Spellwar &grille, char actionJ, unsigned int iLigne, unsig
     int numAct;
     actNecr action;
 
-    // Code procedure
+    // Code de la procedure
     numAct = random(borneMinAct, borneMaxAct);
     switch (numAct)
     {
@@ -239,8 +221,10 @@ void jouerNecrogriffe(Spellwar &grille, char actionJ, unsigned int iLigne, unsig
 
 void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
+    // Variables
     ElementDeJeu elementSuivant;
 
+    // Code de la procedure
     elementSuivant = grille.zoneJeu[iLigne - 1][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == joueur)
@@ -263,8 +247,10 @@ void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iCo
 
 void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
+    // Variables
     ElementDeJeu elementSuivant;
 
+    // Code de la procedure
     elementSuivant = grille.zoneJeu[iLigne][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == joueur)
@@ -287,18 +273,24 @@ void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColo
 
 void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv)
 {
+    // Variables
     ElementDeJeu elementSuivant;
 
+    // Code de la procedure
     elementSuivant = grille.zoneJeu[iLigne + 1][iColonne - 1];
 
     if (elementSuivant.entite == espaceVide || elementSuivant.entite == eclair || elementSuivant.entite == flamme)
     {
         if (elementSuivant.entite == eclair)
         {
+            /* comme l'eclair est en dessous, il n'a pas encore ete deplace, pour faire apparaitre descendre
+            le necrogriffe a cette position on doit d'abord deplace celui qui s'y trouve deja */
             deplacerEclair(grille, iLigne + 1, iColonne - 1, adversairesViv);
         }
         else if (elementSuivant.entite == flamme)
         {
+            /* comme la flamme est en dessous, il n'a pas encore ete deplace, pour faire apparaitre descendre
+            le necrogriffe a cette position on doit d'abord deplace celui qui s'y trouve deja */
             deplacerFlamme(grille, iLigne + 1, iColonne - 1, adversairesViv);
         }
 
@@ -313,6 +305,7 @@ void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, uns
     }
     else if (elementSuivant.entite == joueur)
     {
+        // Pour le joueur specifiquement, il est possible qu'il se trouve en bas a gauche du necrogriffe en ayant deja joue/pas encore joue
         if (elementSuivant.deplaceCeTour)
         {
             definirElement(grille, iLigne, iColonne, creerEspaceVide());
@@ -321,9 +314,13 @@ void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, uns
         }
         else
         {
+            // on fait jouer le joueur a cette position
             jouerJoueur(grille, actionJ, iLigne + 1, iColonne - 1, adversairesViv);
+
+            // s'il est encore en bas a gauche
             if (elementSuivant.entite == joueur)
             {
+                // le necrogriffe se deplace pour tuer le joueur
                 definirFinJeu(grille, mortJoueur);
             }
             definirElement(grille, iLigne, iColonne, creerEspaceVide());

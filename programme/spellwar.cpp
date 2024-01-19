@@ -1,9 +1,9 @@
-/**
- * @file spellwar.cpp
- * @author Rafael Masson - Arthur Baros
- * @brief Partie du corps du module spellwar.h
- * @date 2023-01-16
- */
+/*
+ Programme : spellwar.cpp
+ But : Partie du corps du module spellwar.h
+ Auteurs : Rafael Masson - Arthur Baros
+ Date de derniere modification : 18/01/2024
+*/
 #include "spellwar.h"
 
 ElementDeJeu creerJoueur(bool deplCeTour)
@@ -20,7 +20,7 @@ ElementDeJeu creerJoueur(bool deplCeTour)
         resultat = {joueur, 'J', cyan, false};
     }
 
-    // retourner l'element
+    // retourner l'enregistrement du joueur
     return resultat;
 }
 
@@ -38,7 +38,7 @@ ElementDeJeu creerArcaflamme(bool deplCeTour)
         resultat = {arcaflamme, 'A', jaune, false};
     }
 
-    // retourner l'element
+    // retourner l'enregistrement de l'arcaflamme
     return resultat;
 }
 
@@ -56,7 +56,7 @@ ElementDeJeu creerNecrogriffe(bool deplCeTour)
         resultat = {necrogriffe, 'N', violet, false};
     }
 
-    // retourner l'element
+    // retourner l'enregistrement du necrogriffe
     return resultat;
 }
 
@@ -74,7 +74,7 @@ ElementDeJeu creerEclair(bool deplCeTour)
         resultat = {eclair, '>', cyan, false};
     }
 
-    // retourner l'element
+    // retourner l'enregistrement de l'eclair
     return resultat;
 }
 
@@ -92,7 +92,7 @@ ElementDeJeu creerFlamme(bool deplCeTour)
         resultat = {flamme, '<', jaune, false};
     }
 
-    // retourner l'element
+    // retourner l'enregistrement de la flamme
     return resultat;
 }
 
@@ -116,7 +116,7 @@ ElementDeJeu creerEspaceVide()
 
 ElementDeJeu creerMarqueurCollision()
 {
-    // retourner l'enregistrement de l'espaceVide
+    // retourner l'enregistrement du marqueur de collision
     return {marqueurCollision, 'X', rouge, false};
 }
 

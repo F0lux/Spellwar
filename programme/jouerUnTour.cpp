@@ -1,18 +1,19 @@
-/**
- * @file jouerUnTour.cpp
- * @author Rafael Masson - Arthur Baros
- * @brief Partie du corps du module spellwar.h
- * @date 2023-01-17
- */
+/*
+ Programme : jouerUnTour.cpp
+ But : Partie du corps du module spellwar.h
+ Auteurs : Rafael Masson - Arthur Baros
+ Date de derniere modification : 18/01/2024
+*/
 #include "spellwar.h"
-#include <iostream>
 
 void jouerUnTour(Spellwar &grille, char actionJ, unsigned int &adversairesViv)
 {
+    // Parcours par element de la grille
     for (unsigned int indiceLigne = 0; indiceLigne < TAILLE_COLONNES; indiceLigne++)
     {
         for (unsigned int indiceColonne = 0; indiceColonne < TAILLE_LIGNES; indiceColonne++)
         {
+            // Faire jouer l'element courant 
             if (estJoueurPasDeplCeTour(grille, indiceLigne, indiceColonne))
             {
                 jouerJoueur(grille, actionJ, indiceLigne, indiceColonne, adversairesViv);

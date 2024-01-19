@@ -1,28 +1,26 @@
-/**
- * @file creerZoneJeu.cpp
- * @author Rafael Masson - Arthur Baros
- * @brief Partie du corps du module spellwar.h
- * @date 2023-12-08
- */
+/*
+ Programme : creerZoneJeu.cpp
+ But : Partie du corps du module spellwar.h
+ Auteurs : Rafael Masson - Arthur Baros
+ Date de derniere modification : 18/01/2024
+*/
 #include "spellwar.h"
 
 //****************************************************************************
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
-/**
- * @brief Retourne l'element a affecter a la case courante
- *
- * @param [in] iLigne l'indice de la ligne courante de la grille.
- * @param [in] iColonne l'indice de la colonne courante de la grille.
- */
+
+/* Retourne l'element (murHorizontal, murVertical ou espaceVide) a affecter a la case courante en 
+iLigne l'indice de la ligne courante et iColonne l'indice de la colonne courante de la grille. */
 ElementDeJeu remplirMursEspacesVide(unsigned int iLigne, unsigned int iColonne);
+
 
 //****************************************************************************
 // DEFINITION DES SOUS-PROGRAMMES
 //****************************************************************************
 void creerZoneJeu(Spellwar &grille)
 {
-    // Variables locales
+    // Variables
     ElementDeJeu element;
 
     // Code de la procedure
@@ -38,7 +36,7 @@ void creerZoneJeu(Spellwar &grille)
 
 ElementDeJeu remplirMursEspacesVide(unsigned int iLigne, unsigned int iColonne)
 {
-    // Variables locales
+    // Variables
     ElementDeJeu elem;
 
     // Code de la fonction
