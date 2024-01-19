@@ -10,7 +10,7 @@
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
 
-/* Permet de positionner les arcaflammes et les necrogriffes aleatoirement
+/* BUT : Permet de positionner les arcaflammes et les necrogriffes aleatoirement
  * Prend en parametre la grille de jeu a modifier,
  * nbArca le nombre d'arcaflamme a positionner et nbNecro le nombre de necrogriffe a positionner*/
 void positionnerArcaNecro(Spellwar &grille, unsigned int nbArca, unsigned int nbNecro);

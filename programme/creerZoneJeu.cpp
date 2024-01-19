@@ -10,7 +10,7 @@
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
 
-/* Retourne l'element (murHorizontal, murVertical ou espaceVide) a affecter a la case courante en 
+/* BUT : Retourne l'element (murHorizontal, murVertical ou espaceVide) a affecter a la case courante en 
 iLigne l'indice de la ligne courante et iColonne l'indice de la colonne courante de la grille. */
 ElementDeJeu remplirMursEspacesVide(unsigned int iLigne, unsigned int iColonne);
 

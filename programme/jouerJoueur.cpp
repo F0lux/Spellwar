@@ -10,17 +10,17 @@
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
 
-/* Permet de faire monter d'une ligne le joueur du jeu spellwar
+/* BUT : Permet de faire monter d'une ligne le joueur du jeu spellwar
  * Prend en parametre la grille de jeu a modifier,
  * iLigne l'indice de la ligne de l'element et iColonne l'indice de la colonne de l'element */
 void joueurMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne);
 
-/* Permet de faire descendre d'une ligne le joueur du jeu spellwar
+/* BUT : Permet de faire descendre d'une ligne le joueur du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, actionJ l'action du joueur, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie*/
 void joueurDescendre(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/* Permet de faire tirer un eclair au joueur du jeu spellwar
+/* BUT : Permet de faire tirer un eclair au joueur du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie*/
 void joueurEclair(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);

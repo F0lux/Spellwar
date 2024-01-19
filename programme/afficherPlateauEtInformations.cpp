@@ -11,15 +11,16 @@
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
 
-// Permet d'afficher sur le terminal la representation graphique de l'enregistrement element
+// BUT : Permet d'afficher sur le terminal la representation graphique de l'enregistrement element
 void afficherCaseTableau(const ElementDeJeu &element);
 
-// Permet d'afficher sur le terminal la grille de jeu de spellwar
+// BUT : Permet d'afficher sur le terminal la grille de jeu de spellwar
 void afficherZoneJeu(const Spellwar& grille);
 
 //****************************************************************************
 // DEFINITION DES SOUS-PROGRAMMES
 //****************************************************************************
+
 void afficherCaseTableau(const ElementDeJeu &element)
 {
     afficherTexteEnCouleur(element.representation, element.couleur);

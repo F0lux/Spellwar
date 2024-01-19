@@ -10,32 +10,32 @@
 // DECLARATION DES SOUS-PROGRAMMES
 //****************************************************************************
 
-/* Permet de faire monter d'une ligne un arcaflamme du jeu spellwar
+/* BUT : Permet de faire monter d'une ligne un arcaflamme du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void arcaflammeMonter(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/* Permet de faire descendre d'une ligne un arcaflamme du jeu spellwar
+/* BUT : Permet de faire descendre d'une ligne un arcaflamme du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void arcaflammeDescendre(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/* Permet de faire tirer un flamme a un arcaflamme du jeu spellwar
+/* BUT : Permet de faire tirer un flamme a un arcaflamme du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void arcaflammeFlamme(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/* Permet de faire se deplacer en diagonale haut-gauche un necrogriffe du jeu spellwar
+/* BUT : Permet de faire se deplacer en diagonale haut-gauche un necrogriffe du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void necrogriffeDiagHaut(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/* Permet de faire aller a gauche un necrogriffe du jeu spellwar
+/* BUT : Permet de faire aller a gauche un necrogriffe du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void necrogriffeGauche(Spellwar &grille, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
 
-/* Permet de faire se deplacer en diagonale bas-gauche un necrogriffe du jeu spellwar
+/* BUT : Permet de faire se deplacer en diagonale bas-gauche un necrogriffe du jeu spellwar
  * Prend en parametre la grille de jeu a modifier, actionJ l'action du joueur, iLigne l'indice de la ligne de l'element,
  * iColonne l'indice de la colonne de l'element et adversairesViv le nombre d'adversaires encore en vie */
 void necrogriffeDiagBas(Spellwar &grille, char actionJ, unsigned int iLigne, unsigned int iColonne, unsigned int &adversairesViv);
